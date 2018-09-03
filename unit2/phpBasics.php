@@ -38,9 +38,12 @@ $total = $number1 + $number2;
 
 <!-- START: Question 6 -->
 <p>The array named 'code' holds the following values:
+<br>
   <?= "<script>
 var code = ['PHP', 'HTML', 'Javascript'];
-document.write(code);
+for (i=0; i < code.length; i++){
+document.write(code[i] + '<br>');
+};
 </script>"  ?>
 <p>
 <!-- END: Question 6 -->
