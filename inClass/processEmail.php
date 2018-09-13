@@ -5,12 +5,13 @@
 
   $businessEmail->setMessageLine("Hello Class"); //loaded a value into the object
 
-  $businessEmail->setSenderAddress("wbrown84@gmail.com");
+  $businessEmail->setSenderAddress("contact@willbdesigned.com");
 
-  $businessEmail->setSendToAddress("wbrown.web@gmail.com");
+  $businessEmail->setSendToAddress("wbrown84@gmail.com");
 
   $businessEmail->setSubjectLine("test");
 
+  $validEmail= $businessEmail->sendPHPEmail();
 ?>
 
 <!DOCTYPE html>
@@ -26,5 +27,18 @@
 <p>Your sending this from: <?= $businessEmail->getSenderAddress(); ?></p>
 <p>The subject of this email is: <?= $businessEmail->getSubjectLine(); ?></p>
 <p>Your email message is: <?= $businessEmail->getMessageLine(); ?></p>
+
+<?php if ($validEmail) {
+  ?>
+<p>Thank you for your email. We will respond as soon as possible.</p>
+<?php
+}
+else {
+  ?>
+<p>Sorry, something went wrong. Contact Web Admin.</p>
+<?php
+}
+?>
+
 </body>
 </html>

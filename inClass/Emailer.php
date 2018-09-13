@@ -7,7 +7,6 @@ class Emailer {  //class name and file name have to be exactly the same.
   private $sendToAddress = ""; //Most of the time you will want to use private variables inside a class.
   private $subjectLine = "";      //Always give the variables a default value
 
-
 //define methods of the class
 
 //constructor method
@@ -63,8 +62,11 @@ public function getSubjectLine() {
 //processing methods
 
 public function sendPHPEmail() {
-  
-}
-
+      $headers1 = "From: $this->senderAddress";
+      echo "<p>$this->sendToAddress, $this->sujectLine, $this->messageLine, $headers1</p>";
+      $this->messageLine = wordwrap($this->messageLine,70,"\r\n");
+      return  mail($this->sendToAddress, $this->subjectLine, $this->messageLine, $headers1);//submit email to host email server
+// Add a longer messaeg in the email processor then display the new variable to see it. 
+    }
 }
 ?>
