@@ -1,8 +1,9 @@
 <?php
   // Form Field Variables
+  $valid_form = false;
   $prod_name = "";
   $prod_price = "";
-  $prod_radio = "";
+  // $prod_radio = "";
 
   // Error Messages
   $nameErrMsg = "";
@@ -40,6 +41,17 @@
 
     if($valid_form) {
       // form is good send to db
+      // include pdo
+      // create sql insert command 
+      // try catch block 
+      //   prepare the statement pdo prepared statements
+      //   bind my variables to the prepared statements
+      //   execute your prepared stream_get_transports
+      // confirmation message DO NOT DISPLAY FORM!!!
+            // only do this if the database worked
+            // display confirmation INSTEAD of the form
+            // Message: "Thank you it worked!"
+
     }
 
   }
@@ -54,7 +66,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Self Post Example</title>
 </head>
 
 <body>
@@ -63,6 +75,15 @@
 <h2>Unit-8 Self Posting Form</h2>
 <h3>Example Form</h3>
 <p>Converting a form to a self posting form.</p>
+
+<?php 
+  if($valid_form) {
+    ?>
+    <h1>Form Was Successful</h1>
+<?php
+  }
+  else{
+  ?>
 <form name="form1" method="post" action="selfPostExample.php">
   <p>
     <label for="prod_name">Product Name: </label>
@@ -85,9 +106,13 @@
     <input type="reset" name="Reset" id="button" value="Reset">
   </p>
 </form>
+<?php 
+  } //End Of If statement for Form being good or not
+?>
+
 <p>&nbsp;</p>
 <?php 
-// } //End Of Else Statement
-?>
+//} //End Of Else Statement
+?> 
 </body>
 </html>
