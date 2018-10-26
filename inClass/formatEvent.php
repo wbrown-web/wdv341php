@@ -1,4 +1,5 @@
 <?php
+$current_month = date("m");
 
 try {
     include 'connectPDO.php'; // Conenct to my DB
@@ -120,7 +121,7 @@ die();
                             </div>
                             <div class='col-4 text-right'>
                             <p <?php
-                                if($row['month_date'] == '10') {
+                                if($row['month_date'] == $current_month) {
                                     echo " class='currentMonth' ";
                                 }
                                 else {
