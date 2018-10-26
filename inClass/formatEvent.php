@@ -1,11 +1,13 @@
 <?php
-$current_month = date("m");
+$current_month = date("m"); //used to store the number of the current month to compare against later
 
 try {
     include 'connectPDO.php'; // Conenct to my DB
     
     $stmt = $conn->prepare("SELECT event_name, event_description, event_presenter, DATE_FORMAT(event_date, '%m/%d/%Y') AS display_date, DATE_FORMAT(event_date, '%m') AS month_date FROM wdv341_events ORDER BY display_date DESC");
     $stmt->execute();
+
+    //ran a second DATE_FORMAT(); and assigned it to a different variable to compare against current month
 }
 
 catch(PDOException $e) {
@@ -116,9 +118,10 @@ die();
             </div>
             <div class="col-lg-9">
                 <?php 
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) // Dynamically loads each row from the database into an article element (card)
                  { 
                      ?>
+                     <!-- START: Article Card -->
                     <article>
                         <div class='row'>
                             <div class='col-8'>
@@ -126,7 +129,7 @@ die();
                             </div>
                             <div class='col-4 text-right'>
                             <p <?php
-                                if($row['month_date'] == $current_month) {
+                                if($row['month_date'] == $current_month) { //dynamically compares the incoming month from the row on the database to the current month 
                                     echo " class='currentMonth' ";
                                 }
                                 else {
@@ -150,6 +153,7 @@ die();
                             </div>
                         </div>
                         </article>
+                        <!-- END: Article Card -->
                 <?php
                  }
                 ?>
