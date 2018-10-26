@@ -56,6 +56,7 @@ die();
         background: #6d99c8;
         color: #ffffff;
         padding: 20px;
+        margin-bottom: 10px;
     }
 
     .citynames {
@@ -69,6 +70,13 @@ die();
     footer {
         background: #6d99c8;
         color: #fff;
+        height: 50px;
+        padding: 10px;
+    }
+
+    footer a {
+        text-decoration: none;
+        color: #FFF;
     }
     
     </style>
@@ -80,7 +88,7 @@ die();
     <header>
     <div class="container-fluid"> <!-- START: Header Container -->
         <div class="row">
-            <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-left">
             <h1>Conferences 'R' Us</h1>
             </div>
         </div>
