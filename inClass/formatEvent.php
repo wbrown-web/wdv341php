@@ -35,6 +35,11 @@ die();
 
     }
 
+    article:hover {
+        transition: all .2s ease-in-out;
+        transform: scale(1.01);
+    }
+
     article h1 {
         color: #3067a3;
     }
