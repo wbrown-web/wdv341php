@@ -128,14 +128,14 @@ die();
                                 <h1><?= $row['event_name']?></h1>
                             </div>
                             <div class='col-4 text-right'>
-                            <p <?php
+                            <p class="<?php
                                 if($row['month_date'] == $current_month) { //dynamically compares the incoming month from the row on the database to the current month 
-                                    echo " class='currentMonth' ";
+                                    echo "currentMonth";
                                 }
                                 else {
-                                    echo " class='otherMonth' ";
+                                    echo "otherMonth";
                                 }
-                            ?>>
+                            ?>">
                             <?= $row['display_date']?>
                             
                             </p> 
