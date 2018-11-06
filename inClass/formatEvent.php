@@ -8,6 +8,7 @@ try {
     $stmt->execute();
 
     //ran a second DATE_FORMAT(); and assigned it to a different variable to compare against current month
+    //ran a third DATE_FORMAT(); and assigned it to another variable to compare against current year
 }
 
 catch(PDOException $e) {
@@ -133,7 +134,7 @@ die();
                             </div>
                             <div class='col-4 text-right'>
                             <p class="<?php
-                            //dynamically compares the incoming dates
+                            //dynamically compares the incoming dates lots of big think
                                 if($row['year_date'] >= $current_year) { 
                                     if($row['month_date'] >= $current_month && $row['year_date'] >= $current_year ) {
                                         if($row['month_date'] == $current_month && $row['year_date'] == $current_year) {
@@ -149,8 +150,7 @@ die();
                                         }
                                         else{
                                             echo "normal";
-                                        }
-                                        
+                                        }   
                                     }
                                 }
                                 else {

@@ -135,7 +135,7 @@ session_start();
 				$todaysDate = date("Y-m-d");		//use today's date as the default input to the date( )
 				
 				//Create the SQL command string
-				$sql = "INSERT INTO pit_presenters (";
+				$sql = "INSERT INTO pit_presenters (";  //would run an UPDATE instead of INSERT if you are updating instead of adding
 				$sql .= "presenters_fName, ";
 				$sql .= "presenters_lName, ";
 				$sql .= "presenters_city, ";
