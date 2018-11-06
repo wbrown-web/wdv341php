@@ -1,10 +1,10 @@
 <?php
 $current_month = date("m"); //used to store the number of the current month to compare against later
-
+$current_year = date("Y"); //used to store the current date to compare against later 
 try {
     include 'connectPDO.php'; // Conenct to my DB
     
-    $stmt = $conn->prepare("SELECT event_name, event_description, event_presenter, DATE_FORMAT(event_date, '%m/%d/%Y') AS display_date, DATE_FORMAT(event_date, '%m') AS month_date FROM wdv341_events ORDER BY display_date DESC");
+    $stmt = $conn->prepare("SELECT event_name, event_description, event_presenter, DATE_FORMAT(event_date, '%m/%d/%Y') AS display_date, DATE_FORMAT(event_date, '%m') AS month_date, DATE_FORMAT(event_date, '%Y') AS year_date FROM wdv341_events ORDER BY event_date DESC");
     $stmt->execute();
 
     //ran a second DATE_FORMAT(); and assigned it to a different variable to compare against current month
@@ -14,7 +14,6 @@ catch(PDOException $e) {
 echo "<p>something went wrong</p>";
 die();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -52,12 +51,17 @@ die();
 
     .currentMonth {
         color: red;
-        font-weight: 600;
+        font-weight: 900;
     }
 
-    .otherMonth {
+    .futureMonth {
         font-style: italic;
         font-weight: 600;
+        
+    }
+
+    .normal {
+        color: gray;
     }
 
     header {
@@ -129,11 +133,28 @@ die();
                             </div>
                             <div class='col-4 text-right'>
                             <p class="<?php
-                                if($row['month_date'] == $current_month) { //dynamically compares the incoming month from the row on the database to the current month 
-                                    echo "currentMonth";
+                            //dynamically compares the incoming dates
+                                if($row['year_date'] >= $current_year) { 
+                                    if($row['month_date'] >= $current_month && $row['year_date'] >= $current_year ) {
+                                        if($row['month_date'] == $current_month && $row['year_date'] == $current_year) {
+                                            echo "currentMonth";
+                                        }
+                                        else {
+                                            echo "futureMonth";
+                                        }
+                                    }
+                                    else {
+                                        if($row['year_date'] > $current_year) {
+                                            echo "futureMonth";
+                                        }
+                                        else{
+                                            echo "normal";
+                                        }
+                                        
+                                    }
                                 }
                                 else {
-                                    echo "otherMonth";
+                                    echo "normal";
                                 }
                             ?>">
                             <?= $row['display_date']?>
