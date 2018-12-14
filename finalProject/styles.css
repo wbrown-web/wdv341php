@@ -1,0 +1,71 @@
+label:not(label.form) {
+    display: block;
+    float: left;
+}
+
+.contact-info {
+    font-size: 12px;
+    /* Card Email Styling */
+}
+
+.start-date {
+    font-size: 12px;
+}
+
+
+.right{
+    float:right;
+}
+
+.error-msg {
+    background: red;
+    color: white;
+}
+ 
+.form-left {
+    display: block;
+    float: left;
+}
+
+.pagetitle {
+    line-height: 240px;
+}
+
+.success-msg {
+    background: greenyellow;
+    color: black;
+}
+
+.hidden {
+    display: none;
+}
+
+.delete {
+    color: red;
+}
+
+/* Buttons */
+
+[type='submit'] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+[type='submit'].form {
+    width: 100%;
+}
+
+#loginForm {
+    float:right;
+}
+
+/* Card Stuff */
+
+.card {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.card-body {
+    padding: 1.25rem 1.25rem 0 1.25rem;
+}
