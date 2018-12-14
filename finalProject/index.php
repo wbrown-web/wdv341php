@@ -6,7 +6,7 @@ if(isset($_POST["submit"])){
   }
 
 else {
-      if (isset($_SESSION["admin"]) || isset($_SESSION["resumeAdmin"])) {
+      if (isset($_SESSION["admin"])) {
         session_unset();
         session_destroy();
       }
@@ -23,7 +23,7 @@ else {
    
     $_SESSION["admin"] = false;
     $_SESSION["username"] = "";
-    $_SESSION["resumeAdmin"] = false;
+
     
     if(isset($_POST["login"])){
       
@@ -39,16 +39,9 @@ else {
             } 
 
             else {
-             
-                if ($signIn["username"] == "resumeAdmin"){
-                    $_SESSION["resumeAdmin"] = true;
-                    $_SESSION["username"] = $signIn["username"];
-                } 
-                else {
-                    $_SESSION["admin"] = true;
-                    $_SESSION["username"] = $signIn["username"];
-              }
-              header("location:admin.php");
+                $_SESSION["admin"] = true;
+                $_SESSION["username"] = $signIn["username"];    
+                header("location:admin.php");
             }
           }
 

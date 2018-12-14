@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-if ($_SESSION["admin"] || $_SESSION["resumeAdmin"]) {
+if ($_SESSION["admin"]) {
     } 
 else {
   header("location:index.php");
   exit();
 }
 
-if(isset($_GET["ID"]) && ($_SESSION["admin"] || $_SESSION["resumeAdmin"])){
+if(isset($_GET["ID"]) && ($_SESSION["admin"])){
     $updated_id = $_GET["ID"];
     $displayForm = "";
 } 
@@ -195,7 +195,8 @@ if( isset($_POST['uploadButton']) && isset($_SESSION["admin"])) {
 <!-- START: Members Display -->
 <div class="container">
     <div class="row justify-content-center">
-    <?php 
+    <?php
+    try {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ 
             //Form Variables
             $member_name = $row['memberName'];
@@ -214,9 +215,9 @@ if( isset($_POST['uploadButton']) && isset($_SESSION["admin"])) {
                     <p class="start-date text-right"><strong>Start Date: <?= $row['beginDate'] ?> </strong></p>
                 </div>
                 <?php
-                    if(isset($_SESSION["admin"]) || isset($_SESSION["resumeAdmin"]) )
+                    if(isset($_SESSION["admin"]) )
                     {
-                      if($_SESSION["admin"] || $_SESSION["resumeAdmin"]){
+                      if($_SESSION["admin"]){
                     ?>
                 <div class="card-footer">    
                     <a href="deleteMember.php?ID=<?= $row['ID'] ?>" class="card-link delete float-left">Delete</a>          
@@ -230,6 +231,10 @@ if( isset($_POST['uploadButton']) && isset($_SESSION["admin"])) {
         </div>
     <?php
         }
+    }
+    catch(PDOExeption $e){
+        $errorMSG = "Failed To Add Member " . $e->getMessage();
+    }
     ?>
     </div>
 </div>
@@ -238,7 +243,7 @@ if( isset($_POST['uploadButton']) && isset($_SESSION["admin"])) {
 <!-- START: Update Form -->
 <?php
   if($updated_id == $updated_id) {
-    $stmt = $conn->query("SELECT * FROM teammembers WHERE ID = '$updated_id' ");
+    $stmt = $conn->query("SELECT * FROM `teammembers` WHERE `ID` = '$updated_id' ");
     while ($row = $stmt->fetch())
       {
         $languageArray[$row[0]] = $row[1];

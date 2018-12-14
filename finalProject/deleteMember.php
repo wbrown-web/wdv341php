@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION["admin"] || $_SESSION["resumeAdmin"]) {
+if ($_SESSION["admin"]) {
     } 
 else {
   header("location:index.php");

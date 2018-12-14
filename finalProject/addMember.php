@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["admin"]) || isset($_SESSION["resumeAdmin"])) {
+if (isset($_SESSION["admin"])) {
     } 
 else {
   header("location:index.php");
