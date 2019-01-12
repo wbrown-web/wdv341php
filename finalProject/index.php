@@ -6,9 +6,9 @@ if(isset($_POST["submit"])){
   }
 
 else {
-      if (isset($_SESSION["admin"])) {  //maybe swap to boolean to fix goofy login. Just a thought FIX TODO HACK
-        session_unset();
-        session_destroy();
+      if (isset($_SESSION["admin"])) {  
+        // session_unset();
+        // session_destroy();
       }
     // Fall through
     }
