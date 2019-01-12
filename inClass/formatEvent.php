@@ -2,7 +2,7 @@
 
 
 
-// Function used to set the formatting of the dates
+// Function used to set the formatting(styling) of the dates
 
 function setDateFormat($inYear, $inMonth) {
     

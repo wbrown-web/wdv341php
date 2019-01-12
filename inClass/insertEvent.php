@@ -15,7 +15,8 @@
 
     try {
     $stmt = $conn->prepare($sql); //prepare the sql PDOStatement
-    $stmt->bindParam(':eventName', $event_name); //bind placeholder to a value
+    //bind placeholder to a value
+    $stmt->bindParam(':eventName', $event_name); 
     $stmt->bindParam(':eventDescription', $event_description);
     $stmt->bindParam(':eventPresenter', $event_presenter);
     $stmt->bindParam(':eventDate', $event_date);
